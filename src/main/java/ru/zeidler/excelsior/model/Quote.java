@@ -9,27 +9,32 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "deal")
-@Setter
-@Getter
-@RequiredArgsConstructor
+@Table(name = "quotes")
+@Data
 public class Quote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
     @Column(name = "period",nullable = false)
     private Date period;
+
     @ManyToOne
-    private Ticker ticker;
+    private Stock stock;
+
     @Column(name = "open")
-    private float open;
+    private Double open;
+
     @Column(name="high")
-    private float high;
+    private Double high;
+
     @Column(name="low")
-    private float low;
+    private Double low;
+
     @Column(name="close")
-    private float close;
+    private Double close;
+
     @Column(name="volume")
-    private float volume;
+    private Double volume;
 }

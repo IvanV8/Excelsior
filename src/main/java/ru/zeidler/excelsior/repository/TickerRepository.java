@@ -1,4 +1,4 @@
-package ru.zeidler.excelsior.model;
+package ru.zeidler.excelsior.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
