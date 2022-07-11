@@ -19,12 +19,12 @@ public class Journal {
     @JoinColumn(name ="user_id")
     private Users User;
 
-    @OneToMany
-    @JoinColumn(name = "stock_id")
-    private List<Stock> Stocks;
+    @ManyToOne
+    @JoinColumn(name="stock_id", nullable=false)
+    private Stocks Stock;
 
     @Column(name = "period",nullable = false)
-    private Date period;
+    private Date Period;
 
     @Column(name = "quantaty")
     private Long Quantaty;

@@ -3,7 +3,6 @@ package ru.zeidler.excelsior.dto;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import ru.zeidler.excelsior.model.Stock;
 import ru.zeidler.excelsior.model.Users;
 
 import java.util.Date;
@@ -14,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class JournalDTO {
     private Users user;
-    private List<Stock> Stocks;
+    private List<StockDTO> stocks;
     private Date period;
     private Long quantaty;
     private Double price;

@@ -5,19 +5,24 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @RequiredArgsConstructor
 public class UserDTO {
     public String name;
-    public Double Credit;
-    public Double StartCapital;
-    public Double Reserved;
-    public String Portfolio_code;
-    public Double FeePercent;
-    public Double LimitPercent;
-    public Double MaxRisk;
-    public Boolean OptimalCapital;
-    public Boolean Test;
+    public Double credit;
+    public Double startCapital;
+    public Double reserved;
+    public String portfolio_code;
+    public Double feePercent;
+    public Double limitPercent;
+    public Double maxRisk;
+    public Boolean optimalCapital;
+    public Boolean test;
+
+    public List<PositionDTO> positions = new ArrayList<>();
 }
 

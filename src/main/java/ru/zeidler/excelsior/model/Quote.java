@@ -1,9 +1,6 @@
 package ru.zeidler.excelsior.model;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -15,25 +12,26 @@ public class Quote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long Id;
 
     @Column(name = "period",nullable = false)
-    private Date period;
+    private Date Period;
 
     @ManyToOne
-    private Stock stock;
+    @JoinColumn(name="stock_id", nullable=false)
+    private Stocks Stock;
 
     @Column(name = "open")
-    private Double open;
+    private Double Open;
 
     @Column(name="high")
-    private Double high;
+    private Double High;
 
     @Column(name="low")
-    private Double low;
+    private Double Low;
 
     @Column(name="close")
-    private Double close;
+    private Double Close;
 
     @Column(name="volume")
     private Double volume;

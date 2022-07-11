@@ -9,23 +9,23 @@ import javax.persistence.*;
 @Table(name = "stocks")
 @Data
 
-public class Stock {
+public class Stocks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long Id;
 
     @Column(name = "ticker", nullable = false)
-    String ticker;
+    String Ticker;
 
     @Column(name = "company", nullable = false)
-    String company;
+    String Company;
 
     @Column(name = "lot")
-    Long lot;
+    Long Lot;
 
     @Column(name = "alt_ticker")
-    String alt_ticker;
+    String Alt_ticker;
 
 
 

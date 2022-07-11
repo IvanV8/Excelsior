@@ -12,20 +12,20 @@ public class Excelsior {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long Id;
 
     @Column(name = "period",nullable = false)
-    private Date period;
+    private Date Period;
 
-    @Column(name = "stock_id")
-    private Long  stock_id;
+    @JoinColumn(name="stock_id", nullable=false)
+    private Stocks  Stock;
 
     @Column(name = "target")
-    private Double target;
+    private Double Target;
 
     @Column(name="exit")
-    private Double exit;
+    private Double Exit;
 
     @Column(name="power")
-    private Double power;
+    private Double Power;
 }

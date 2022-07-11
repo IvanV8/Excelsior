@@ -2,11 +2,10 @@ package ru.zeidler.excelsior.model;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -45,6 +44,10 @@ public class Users {
 
     @Column(name = "test")
     private Boolean Test;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy="user")
+    @JoinColumn(name = "user_id")
+    private List<PortfolioPosition> Portfolios =new ArrayList<>();
 }
 
 
