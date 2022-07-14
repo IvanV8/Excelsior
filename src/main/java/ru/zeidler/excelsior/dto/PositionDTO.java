@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class PositionDTO {
+public class PositionDTO extends AbstractDTO {
     public UserDTO user;
     public  StockDTO stock;
     public Long quantaty;

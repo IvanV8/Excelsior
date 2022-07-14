@@ -1,6 +1,7 @@
 package ru.zeidler.excelsior.dto;
 
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -8,10 +9,9 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @RequiredArgsConstructor
-public class UserDTO {
+public class UserDTO extends AbstractDTO {
     public String name;
     public Double credit;
     public Double startCapital;

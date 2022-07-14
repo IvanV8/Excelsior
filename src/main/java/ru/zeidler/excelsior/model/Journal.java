@@ -1,13 +1,15 @@
 package ru.zeidler.excelsior.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "journal")
+@Table(name = "journal" ,schema = "excelsior_db")
 @Data
 public class Journal {
     @Id
@@ -37,5 +39,11 @@ public class Journal {
 
     @Column(name = "summ")
     private Double Summ;
+
+    @CreationTimestamp
+    private Date createdAt;
+
+    @UpdateTimestamp
+    private Date updatedAt;
 
 }

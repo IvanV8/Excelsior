@@ -4,12 +4,12 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+
 import java.util.Date;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class QuoteDTO {
-
+public class QuoteDTO extends AbstractDTO {
     private Date period;
     private StockDTO stock;
     private Double open;

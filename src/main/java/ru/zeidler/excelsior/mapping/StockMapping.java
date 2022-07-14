@@ -6,24 +6,28 @@ import org.mapstruct.Mappings;
 import ru.zeidler.excelsior.dto.StockDTO;
 import ru.zeidler.excelsior.model.Stocks;
 
-@Mapper
+import java.util.List;
+
+@Mapper(componentModel = "spring")
 public interface StockMapping {
     @Mappings({
-            @Mapping(target="id", source="ID"),
-            @Mapping(target="ticker", source="Ticker"),
-            @Mapping(target="alt_ticker", source="Alt_Ticker"),
-            @Mapping(target="lot", source="Lot"),
-            @Mapping(target="company", source="Company")
+            @Mapping(target="id", source="id"),
+            @Mapping(target="ticker", source="ticker"),
+            @Mapping(target="alt_ticker", source="alt_ticker"),
+            @Mapping(target="lot", source="lot"),
+            @Mapping(target="company", source="company")
     })
-    StockDTO stockDTO(Stocks stock);
+    public StockDTO stockDTO(Stocks stock);
+    public List<StockDTO> stockDTO(List<Stocks> stockList);
 
     @Mappings({
-            @Mapping(target="ID", source="id"),
-            @Mapping(target="Ticker", source="ticker"),
-            @Mapping(target="Alt_ticker", source="alt_Ticker"),
-            @Mapping(target="Lot", source="lot"),
-            @Mapping(target="Company", source="company")
+            @Mapping(target="id", source="id"),
+            @Mapping(target="ticker", source="ticker"),
+            @Mapping(target="alt_ticker", source="alt_ticker"),
+            @Mapping(target="lot", source="lot"),
+            @Mapping(target="company", source="company")
     })
-    Stocks Stock(StockDTO stockDTO);
+    public Stocks Stock(StockDTO stockDTO);
+
 
 }

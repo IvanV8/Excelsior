@@ -2,13 +2,16 @@ package ru.zeidler.excelsior.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "portfolio_position")
+@Table(name = "portfolio_position",schema = "excelsior_db")
 @Data
 public class PortfolioPosition {
     @Id
@@ -33,6 +36,12 @@ public class PortfolioPosition {
     @Column(name = "Amount")
     private Double Amount;
 
+
+    @CreationTimestamp
+    private Date createdAt;
+
+    @UpdateTimestamp
+    private Date updatedAt;
 
 
 }

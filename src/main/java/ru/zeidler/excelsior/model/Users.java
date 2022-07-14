@@ -1,15 +1,18 @@
 package ru.zeidler.excelsior.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
 @Entity
-@Table(name = "users")
+@Table(name = "users",schema = "excelsior_db")
 public class Users {
     @Id
     @Column(name = "id")
@@ -45,9 +48,15 @@ public class Users {
     @Column(name = "test")
     private Boolean Test;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy="user")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id")
     private List<PortfolioPosition> Portfolios =new ArrayList<>();
+
+    @CreationTimestamp
+    private Date createdAt;
+
+    @UpdateTimestamp
+    private Date updatedAt;
 }
 
 

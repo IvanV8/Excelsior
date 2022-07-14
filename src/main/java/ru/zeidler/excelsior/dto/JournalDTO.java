@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @RequiredArgsConstructor
-public class JournalDTO {
+public class JournalDTO extends AbstractDTO {
     private Users user;
     private List<StockDTO> stocks;
     private Date period;

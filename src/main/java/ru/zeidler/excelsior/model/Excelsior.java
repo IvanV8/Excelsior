@@ -1,12 +1,14 @@
 package ru.zeidler.excelsior.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "excelsior")
+@Table(name = "excelsior", schema = "excelsior_db")
 @Data
 public class Excelsior {
     @Id
@@ -17,6 +19,7 @@ public class Excelsior {
     @Column(name = "period",nullable = false)
     private Date Period;
 
+    @ManyToOne
     @JoinColumn(name="stock_id", nullable=false)
     private Stocks  Stock;
 
@@ -28,4 +31,10 @@ public class Excelsior {
 
     @Column(name="power")
     private Double Power;
+
+    @CreationTimestamp
+    private Date createdAt;
+
+    @UpdateTimestamp
+    private Date updatedAt;
 }

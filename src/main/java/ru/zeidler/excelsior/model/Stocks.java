@@ -1,12 +1,15 @@
 package ru.zeidler.excelsior.model;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "stocks")
+@Table(name = "stocks",schema = "excelsior_db")
 @Data
 
 public class Stocks {
@@ -27,7 +30,9 @@ public class Stocks {
     @Column(name = "alt_ticker")
     String Alt_ticker;
 
+    @CreationTimestamp
+    private Date createdAt;
 
-
-
+    @UpdateTimestamp
+    private Date updatedAt;
 }
