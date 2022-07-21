@@ -22,35 +22,35 @@ public class Users {
     private String name;
 
     @Column(name = "credit")
-    private Double Credit;
+    private Double credit;
 
     @Column(name = "start_capital")
-    private Double StartCapital;
+    private Double startcapital;
 
     @Column(name = "reserved")
-    private Double Reserved;
+    private Double reserved;
 
     @Column(name = "portfolio_code")
-    private String Portfolio_code;
+    private String portfolio_code;
 
     @Column(name = "fee_percent")
-    private Double FeePercent;
+    private Double feePercent;
 
     @Column(name = "limit_percent")
-    private Double LimitPercent;
+    private Double limitPercent;
 
     @Column(name = "max_risk")
-    private Double MaxRisk;
+    private Double maxRisk;
 
     @Column(name = "optimal_capital")
-    private Boolean OptimalCapital;
+    private Boolean optimalcapital;
 
     @Column(name = "test")
-    private Boolean Test;
+    private Boolean test;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "user_id")
-    private List<PortfolioPosition> Portfolios =new ArrayList<>();
+    private List<PortfolioPosition> portfolios =new ArrayList<>();
 
     @CreationTimestamp
     private Date createdAt;

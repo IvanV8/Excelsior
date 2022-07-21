@@ -16,7 +16,7 @@ public class Stocks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long Id;
+    private Long primaryId;
 
     @Column(name = "ticker", nullable = false)
     String Ticker;

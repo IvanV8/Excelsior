@@ -14,26 +14,26 @@ public class Quote {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long Id;
+    private Long id;
 
     @Column(name = "period",nullable = false)
-    private Date Period;
+    private Date period;
 
     @ManyToOne
     @JoinColumn(name="stock_id", nullable=false)
-    private Stocks Stock;
+    private Stocks stock;
 
     @Column(name = "open")
-    private Double Open;
+    private Double open;
 
     @Column(name="high")
-    private Double High;
+    private Double high;
 
     @Column(name="low")
-    private Double Low;
+    private Double low;
 
     @Column(name="close")
-    private Double Close;
+    private Double close;
 
     @Column(name="volume")
     private Double volume;
