@@ -2,6 +2,7 @@ package ru.zeidler.excelsior.controller;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,9 @@ public class QuotesController {
 
     @GetMapping(value = "/getbyticker", produces = MediaType.APPLICATION_JSON_VALUE)
 
-    public ResponseEntity<List<QuoteDTO>> getByTicker(@RequestParam String ticker, Date d1, Date d2) {
+    public ResponseEntity<List<QuoteDTO>> getByTicker(@RequestParam String ticker,
+                                                      @RequestParam @DateTimeFormat(pattern="dd-MM-yyyy") Date d1,
+                                                      @RequestParam @DateTimeFormat(pattern="dd-MM-yyyy") Date d2) {
              List<Quote> quotes = quoteService.GetQuotes(ticker, d1, d2);
 
         return ResponseEntity.ok()
@@ -38,7 +41,7 @@ public class QuotesController {
     }
 
     @GetMapping(value = "/getbyday", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<QuoteDTO>> getByTicker(@RequestParam Date d) {
+    public ResponseEntity<List<QuoteDTO>> getByTicker(@RequestParam @DateTimeFormat(pattern="dd-MM-yyyy") Date d) {
         List<Quote> quotes = quoteService.GetQuotes(d);
         return ResponseEntity.ok()
                 .body(quoteMapping.quoteDTO(quotes));

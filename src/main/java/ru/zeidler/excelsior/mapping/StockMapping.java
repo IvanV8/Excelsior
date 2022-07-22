@@ -10,23 +10,11 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface StockMapping {
-    @Mappings({
-            @Mapping(target="id", source="id"),
-            @Mapping(target="ticker", source="ticker"),
-            @Mapping(target="alt_ticker", source="alt_ticker"),
-            @Mapping(target="lot", source="lot"),
-            @Mapping(target="company", source="company")
-    })
+
     public StockDTO stockDTO(Stocks stock);
     public List<StockDTO> stockDTO(List<Stocks> stockList);
 
-    @Mappings({
-            @Mapping(target="id", source="id"),
-            @Mapping(target="ticker", source="ticker"),
-            @Mapping(target="alt_ticker", source="alt_ticker"),
-            @Mapping(target="lot", source="lot"),
-            @Mapping(target="company", source="company")
-    })
+
     public Stocks Stock(StockDTO stockDTO);
 
 

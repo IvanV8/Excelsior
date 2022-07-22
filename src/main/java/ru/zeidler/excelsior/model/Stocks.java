@@ -19,16 +19,16 @@ public class Stocks {
     private Long primaryId;
 
     @Column(name = "ticker", nullable = false)
-    String Ticker;
+    String ticker;
 
     @Column(name = "company", nullable = false)
-    String Company;
+    String company;
 
     @Column(name = "lot")
-    Long Lot;
+    Long lot;
 
     @Column(name = "alt_ticker")
-    String Alt_ticker;
+    String alt_ticker;
 
     @CreationTimestamp
     private Date createdAt;
