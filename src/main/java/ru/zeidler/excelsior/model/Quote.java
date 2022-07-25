@@ -1,14 +1,12 @@
 package ru.zeidler.excelsior.model;
 
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "quotes",schema = "excelsior_db")
+@Table(name = "quotes", schema = "excelsior_db")
 @Data
 public class Quote {
     @Id
@@ -19,7 +17,8 @@ public class Quote {
     @Column(name = "period",nullable = false)
     private Date period;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     @JoinColumn(name="stock_id", nullable=false)
     private Stocks stock;
 
@@ -37,10 +36,4 @@ public class Quote {
 
     @Column(name="volume")
     private Double volume;
-
-    @CreationTimestamp
-    private Date createdAt;
-
-    @UpdateTimestamp
-    private Date updatedAt;
 }

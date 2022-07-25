@@ -13,9 +13,5 @@ public interface StockMapping {
 
     public StockDTO stockDTO(Stocks stock);
     public List<StockDTO> stockDTO(List<Stocks> stockList);
-
-
     public Stocks Stock(StockDTO stockDTO);
-
-
 }

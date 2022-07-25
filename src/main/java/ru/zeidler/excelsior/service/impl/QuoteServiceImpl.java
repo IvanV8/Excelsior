@@ -3,6 +3,7 @@ package ru.zeidler.excelsior.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.zeidler.excelsior.dto.QuoteDTO;
 import ru.zeidler.excelsior.mapping.QuoteMapping;
 import ru.zeidler.excelsior.model.Quote;
 import ru.zeidler.excelsior.model.Stocks;
@@ -18,18 +19,19 @@ public class QuoteServiceImpl implements QuoteService {
 
 
     private QuoteRepository quoteRepository;
+    private QuoteMapping quoteMapping;
 
     @Override
-    public List<Quote> GetQuotes(Date day) {
+    public List<QuoteDTO> GetQuotes(Date day) {
 
         List<Quote> quotes = quoteRepository.findByPeriodIs( day);
-        return quotes;
+        return quoteMapping.quoteDTO(quotes);
     }
 
     @Override
-    public List<Quote> GetQuotes(String ticker, Date d1, Date d2) {
+    public List<QuoteDTO> GetQuotes(String ticker, Date d1, Date d2) {
         List<Quote> quotes = quoteRepository.findByStock_TickerEqualsAndPeriodIsBetween(ticker, d1, d2);
-        return quotes;
+        return quoteMapping.quoteDTO(quotes);
 
     }
 }

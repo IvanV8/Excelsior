@@ -15,30 +15,32 @@ public class Journal {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Long primaryid;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,
+    cascade = CascadeType.ALL)
     @JoinColumn(name ="user_id")
-    private Users User;
+    private Users user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     @JoinColumn(name="stock_id", nullable=false)
-    private Stocks Stock;
+    private Stocks stock;
 
     @Column(name = "period",nullable = false)
-    private Date Period;
+    private Date period;
 
     @Column(name = "quantaty")
-    private Long Quantaty;
+    private Long quantaty;
 
     @Column(name = "price")
-    private Double Price;
+    private Double price;
 
     @Column(name = "fees")
-    private Double Fees;
+    private Double fees;
 
     @Column(name = "summ")
-    private Double Summ;
+    private Double summ;
 
     @CreationTimestamp
     private Date createdAt;

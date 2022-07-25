@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface QuoteService {
 
-    List<Quote> GetQuotes(Date day);
+    List<QuoteDTO> GetQuotes(Date day);
 
-    List<Quote> GetQuotes(String ticker, Date d1, Date d2);
+    List<QuoteDTO> GetQuotes(String ticker, Date d1, Date d2);
 }
 

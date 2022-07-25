@@ -17,24 +17,26 @@ public class PortfolioPosition {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long Id;
+    private Long primaryId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,
+    cascade = CascadeType.ALL)
     @JoinColumn(name="user_id", nullable=false)
-    private Users User;
+    private Users user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     @JoinColumn(name="stock_id", nullable=false)
-    private Stocks  Stock;
+    private Stocks stock;
 
     @Column(name = "quantaty")
-    private Double Quantaty;
+    private Double quantaty;
 
     @Column(name = "price")
-    private Double Price;
+    private Double price;
 
     @Column(name = "Amount")
-    private Double Amount;
+    private Double amount;
 
 
     @CreationTimestamp

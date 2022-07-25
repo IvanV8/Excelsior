@@ -14,23 +14,24 @@ public class Excelsior {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long Id;
+    private Long id;
 
     @Column(name = "period",nullable = false)
-    private Date Period;
+    private Date period;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     @JoinColumn(name="stock_id", nullable=false)
-    private Stocks  Stock;
+    private Stocks  stock;
 
     @Column(name = "target")
-    private Double Target;
+    private Double target;
 
     @Column(name="exit")
-    private Double Exit;
+    private Double exit;
 
     @Column(name="power")
-    private Double Power;
+    private Double power;
 
     @CreationTimestamp
     private Date createdAt;
