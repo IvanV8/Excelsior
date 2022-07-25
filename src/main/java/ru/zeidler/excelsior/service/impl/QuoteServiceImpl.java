@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import ru.zeidler.excelsior.dto.QuoteDTO;
 import ru.zeidler.excelsior.mapping.QuoteMapping;
 import ru.zeidler.excelsior.model.Quote;
-import ru.zeidler.excelsior.model.Stocks;
 import ru.zeidler.excelsior.repository.QuoteRepository;
 import ru.zeidler.excelsior.service.QuoteService;
 
@@ -17,14 +16,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class QuoteServiceImpl implements QuoteService {
 
-
+    @Autowired
     private QuoteRepository quoteRepository;
+
+    @Autowired
     private QuoteMapping quoteMapping;
 
     @Override
     public List<QuoteDTO> GetQuotes(Date day) {
 
-        List<Quote> quotes = quoteRepository.findByPeriodIs( day);
+        List<Quote> quotes = quoteRepository.findByPeriodIs(day);
         return quoteMapping.quoteDTO(quotes);
     }
 

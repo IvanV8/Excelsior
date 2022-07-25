@@ -1,6 +1,7 @@
 package ru.zeidler.excelsior.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.zeidler.excelsior.dto.StockDTO;
 import ru.zeidler.excelsior.mapping.StockMapping;
@@ -13,7 +14,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class StockServiceImpl implements StockService {
 
+    @Autowired
     private final StocksRepository stockRepositary;
+    @Autowired
     private final StockMapping stockMapping;
 
     @Override

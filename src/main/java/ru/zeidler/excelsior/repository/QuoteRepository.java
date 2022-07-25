@@ -10,8 +10,14 @@ import java.util.Optional;
 
 public interface QuoteRepository extends JpaRepository<Quote, Long> {
 
-    List<Quote> findByStock_TickerEqualsAndPeriodIsBetween(String Ticker, Date PeriodStart, Date PeriodEnd);
 
+    @Query(value="SELECT qu.*, ti.ticker FROM excelsior_db.quotes  qu" +
+            "     LEFT OUTER JOIN excelsior_db.stocks ti ON qu.stock_id = ti.id" +
+            "     WHERE qu.period >= :PeriodStart" +
+            "     AND qu.period <=:PeriodEnd" +
+            "     AND ti.ticker = :Ticker",
+            nativeQuery = true)
+    List<Quote> findByStock_TickerEqualsAndPeriodIsBetween(String Ticker, Date PeriodStart, Date PeriodEnd);
 
     Optional<Quote> findByStock_TickerIsStartingWith(String Ticker);
 
