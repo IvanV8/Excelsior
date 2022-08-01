@@ -1,17 +1,18 @@
 package ru.zeidler.excelsior.service;
 
 import org.mapstruct.Mapper;
+import org.springframework.stereotype.Service;
 import ru.zeidler.excelsior.dto.UserDTO;
 import ru.zeidler.excelsior.model.Users;
 
 import java.util.List;
 
-
+@Service
 public interface UserService {
 
-      public List<Users> findAll();
+      public List<UserDTO> findAll();
 
-      public Users findById(Long id);
+      public UserDTO findById(Long id);
 
 
 }

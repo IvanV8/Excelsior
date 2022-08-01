@@ -5,10 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.zeidler.excelsior.dto.QuoteDTO;
 import ru.zeidler.excelsior.dto.StockDTO;
 import ru.zeidler.excelsior.service.QuoteService;
@@ -26,9 +23,9 @@ public class StockController {
     private final StockService stockService;
 
 
-    @GetMapping(value = "/getbyticker", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/getbyticker/{ticker}", produces = MediaType.APPLICATION_JSON_VALUE)
 
-    public ResponseEntity<StockDTO> getByTicker(@RequestParam String ticker) {
+    public ResponseEntity<StockDTO> getByTicker(@PathVariable String ticker) {
              StockDTO stock = stockService.GetStockByTicker(ticker);
 
         return ResponseEntity.ok()

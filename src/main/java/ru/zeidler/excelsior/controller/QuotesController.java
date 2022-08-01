@@ -23,7 +23,7 @@ public class QuotesController {
 
     private final QuoteService quoteService;
 
-    /*private final QuoteMapping quoteMapping;*/
+
 
     @GetMapping(value = "/getbyticker", produces = MediaType.APPLICATION_JSON_VALUE)
 

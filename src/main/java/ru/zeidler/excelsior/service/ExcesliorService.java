@@ -1,10 +1,13 @@
 package ru.zeidler.excelsior.service;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import ru.zeidler.excelsior.dto.ExcelsiorDTO;
 import ru.zeidler.excelsior.dto.QuoteDTO;
 
 import java.util.Date;
 import java.util.List;
+
 
 public interface ExcesliorService {
 

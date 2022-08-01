@@ -1,7 +1,11 @@
 package ru.zeidler.excelsior.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.zeidler.excelsior.dto.UserDTO;
+import ru.zeidler.excelsior.mapping.StockMapping;
+import ru.zeidler.excelsior.mapping.UsersMapping;
 import ru.zeidler.excelsior.model.Users;
 import ru.zeidler.excelsior.repository.UserRepository;
 import ru.zeidler.excelsior.service.UserService;
@@ -12,18 +16,23 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     private final UserRepository userRepositary;
 
+    @Autowired
+    private final UsersMapping userMapping;
+
+
     @Override
-    public List<Users> findAll() {
-        return userRepositary.findAll();
+    public List<UserDTO> findAll() {
+        List<Users> u = userRepositary.findAll();
+        return userMapping.toUserDTO(u);
     }
 
     @Override
-    public Users findById(Long id)  {
+    public UserDTO findById(Long id)  {
 
-
-        return userRepositary.findByPrimaryId(id);
+        return userMapping.toUserDTO( userRepositary.findByPrimaryId(id));
 
     }
 }

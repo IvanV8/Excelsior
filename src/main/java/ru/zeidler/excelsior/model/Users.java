@@ -57,6 +57,11 @@ public class Users {
 
     @UpdateTimestamp
     private Date updatedAt;
+
+    public void Users() {
+        createdAt = new Date();
+        updatedAt = new Date();
+    }
 }
 
 

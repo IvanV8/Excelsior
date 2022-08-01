@@ -1,6 +1,8 @@
 package ru.zeidler.excelsior.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.zeidler.excelsior.dto.ExcelsiorDTO;
 import ru.zeidler.excelsior.mapping.ExcelsiorMapping;
 import ru.zeidler.excelsior.model.Excelsior;
@@ -10,6 +12,8 @@ import ru.zeidler.excelsior.service.ExcesliorService;
 import java.util.Date;
 import java.util.List;
 
+@Service
+@RequiredArgsConstructor
 public class ExcesliorServiceImpl implements ExcesliorService {
 
     @Autowired
