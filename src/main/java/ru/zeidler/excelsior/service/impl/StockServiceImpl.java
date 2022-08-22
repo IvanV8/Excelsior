@@ -34,7 +34,8 @@ public class StockServiceImpl implements StockService {
     public StockDTO GetStockByTicker(String ticker) {
 
         Stocks stock = stockRepositary.findByTicker(ticker)
-                .orElseThrow(() -> new NoTickerException("No ticker"));
+                .orElseThrow(() -> new NoTickerException(ticker));
+
         StockDTO sDTO = stockMapping.stockDTO( stock);
         return sDTO;
 

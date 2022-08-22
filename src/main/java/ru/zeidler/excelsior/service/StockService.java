@@ -11,5 +11,6 @@ public interface StockService {
     List<StockDTO> GetAllStocks();
 
     StockDTO GetStockByTicker(String ticker);
+
 }
 

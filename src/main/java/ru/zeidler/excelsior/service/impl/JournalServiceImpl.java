@@ -7,11 +7,14 @@ import org.springframework.stereotype.Service;
 import ru.zeidler.excelsior.dto.JournalDTO;
 
 import ru.zeidler.excelsior.mapping.JournalMapping;
+
+import ru.zeidler.excelsior.model.Journal;
 import ru.zeidler.excelsior.repository.JournalRepository;
 import ru.zeidler.excelsior.service.JournalService;
 
 import java.util.Date;
 import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class JournalServiceImpl implements JournalService {
@@ -24,7 +27,9 @@ public class JournalServiceImpl implements JournalService {
 
     @Override
     public List<JournalDTO> GetJournal(Long UserId, Date d1, Date d2) {
-        return null;
+        List<Journal> journal = journalRepositary.getJournal(UserId, d1, d2);
+        return journalMapping.journalDTO(journal);
+
 
     }
 }

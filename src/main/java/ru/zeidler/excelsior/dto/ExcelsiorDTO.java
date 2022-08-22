@@ -10,7 +10,6 @@ import java.util.Date;
 @Setter
 @RequiredArgsConstructor
 public class ExcelsiorDTO extends AbstractDTO {
-    private Long primaryID;
     private Date period;
     private StockDTO stock;
     private Double target;

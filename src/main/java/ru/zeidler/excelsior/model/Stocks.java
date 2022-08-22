@@ -1,33 +1,34 @@
 package ru.zeidler.excelsior.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "stocks",schema = "excelsior_db")
 @Data
+@EqualsAndHashCode(of="id")
 
 public class Stocks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long primaryId;
+    @Column(name="id", nullable = false)
+    private Long id;
 
-    @Column(name = "ticker", nullable = false)
+    @Column(nullable = false)
     String ticker;
 
-    @Column(name = "company", nullable = false)
+    @Column(nullable = false)
     String company;
 
-    @Column(name = "lot")
     Long lot;
-
-    @Column(name = "alt_ticker")
     String alt_ticker;
 
     @CreationTimestamp

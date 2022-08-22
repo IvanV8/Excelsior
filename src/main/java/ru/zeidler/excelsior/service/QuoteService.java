@@ -14,5 +14,7 @@ public interface QuoteService {
     List<QuoteDTO> GetQuotes(Date day);
 
     List<QuoteDTO> GetQuotes(String ticker, Date d1, Date d2);
+
+    void SaveQuote(QuoteDTO quoteDTO);
 }
 

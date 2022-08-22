@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO findById(Long id)  {
 
-        return userMapping.toUserDTO( userRepositary.findByPrimaryId(id));
+        return userMapping.toUserDTO( userRepositary.getById(id));
 
     }
 }

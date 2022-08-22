@@ -1,6 +1,7 @@
 package ru.zeidler.excelsior.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -12,40 +13,32 @@ import java.util.List;
 
 @Data
 @Entity
+@EqualsAndHashCode(of="id")
 @Table(name = "users",schema = "excelsior_db")
 public class Users {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long primaryId;
+    private Long id;
 
-    @Column(name = "name")
+
     private String name;
-
-    @Column(name = "credit")
     private Double credit;
 
-    @Column(name = "start_capital")
     private Double startcapital;
 
-    @Column(name = "reserved")
     private Double reserved;
 
-    @Column(name = "portfolio_code")
     private String portfolio_code;
 
-    @Column(name = "fee_percent")
     private Double feePercent;
 
-    @Column(name = "limit_percent")
     private Double limitPercent;
 
-    @Column(name = "max_risk")
     private Double maxRisk;
 
-    @Column(name = "optimal_capital")
     private Boolean optimalcapital;
 
-    @Column(name = "test")
     private Boolean test;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

@@ -16,6 +16,5 @@ public interface QuoteMapping {
 
     public QuoteDTO quoteDTO(Quote quote);
     public List<QuoteDTO> quoteDTO(List<Quote> quoteList);
-
     public Quote Quote(QuoteDTO quoteDTO);
 }

@@ -3,17 +3,17 @@ package ru.zeidler.excelsior.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.zeidler.excelsior.dto.QuoteDTO;
 import ru.zeidler.excelsior.service.QuoteService;
+import ru.zeidler.excelsior.util.AppError;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,10 +37,24 @@ public class QuotesController {
     }
 
     @GetMapping(value = "/getbyday", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<QuoteDTO>> getByTicker(@RequestParam @DateTimeFormat(pattern="dd-MM-yyyy") Date d) {
-        List<QuoteDTO> quotes = quoteService.GetQuotes(d);
-        return ResponseEntity.ok()
-                .body(quotes);
+    public ResponseEntity<?> getByTicker(@RequestParam @DateTimeFormat(pattern="dd-MM-yyyy") Date d) {
+        try {
+                List<QuoteDTO> quotes = Optional.of(quoteService.GetQuotes(d)).orElseThrow();
+                return new ResponseEntity<>(quotes, HttpStatus.OK);
+             } catch (Exception e) {
+                return new ResponseEntity<>(new AppError(HttpStatus.NOT_FOUND.value(),
+                        "Quotes not found"),
+                        HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping(value = "/save", consumes=MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> saveQuote(@RequestBody QuoteDTO q  ) {
+        quoteService.SaveQuote(q);
+        return ResponseEntity.ok().build();
+
+
+
     }
 
 }

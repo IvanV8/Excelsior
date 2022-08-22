@@ -29,13 +29,10 @@ public class PortfolioPosition {
     @JoinColumn(name="stock_id", nullable=false)
     private Stocks stock;
 
-    @Column(name = "quantaty")
     private Double quantaty;
 
-    @Column(name = "price")
     private Double price;
 
-    @Column(name = "Amount")
     private Double amount;
 
 
